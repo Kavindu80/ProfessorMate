@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { 
   View, Text, StyleSheet, Image, TouchableOpacity,
-  Dimensions, SafeAreaView, Platform, StatusBar
+  Dimensions, SafeAreaView, Platform, StatusBar, ScrollView
 } from 'react-native';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { width, height } = Dimensions.get('window');
-const TILE_SIZE = Math.min(width / 8, 45);
 
-export default function WordPuzzleScreenJ1({ navigation, route }) {
-  const { word = "JACKET", image = require("../../../../assets/items/jacket.png") } = route?.params || {};
+export default function WordPuzzleScreenV5({ navigation, route }) {
+  const { word = "VEGETABLE", image = require("../../../../assets/items/vegetable.png") } = route?.params || {};
+  
+  // Calculate tile size based on word length
+  const getTileSize = () => {
+    return word.length > 6 ? 
+      Math.min(width / 10, 40) : 
+      Math.min(width / 8, 45);
+  };
+  
+  const TILE_SIZE = getTileSize();
   
   const [isCorrect, setIsCorrect] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [placedTiles, setPlacedTiles] = useState(Array(word.length).fill(null));
   
   const createPuzzleLetters = () => {
-    const extraLettersCount = Math.min(8 - word.length, 5);
-    const extraLetters = 'BDFGHILMNOPQRSUVWXYZ'
+    // Calculate how many extra letters to add based on word length
+    const maxTotalTiles = Math.min(16, word.length + 6); // Limit total tiles to 16 max
+    const extraLettersCount = Math.max(2, maxTotalTiles - word.length);
+    
+    const extraLetters = 'BCDFHIJKMNOPQRSUWXYZ'
       .split('')
       .filter(l => !word.includes(l))
       .sort(() => Math.random() - 0.5)
@@ -28,7 +39,7 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
       .map(letter => ({ 
         letter, 
         id: Math.random().toString(),
-        isPlaced: falses
+        isPlaced: false
       }))
       .sort(() => Math.random() - 0.5);
   };
@@ -63,12 +74,12 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
   
   const savePuzzleStatus = async (status) => {
     try {
-      const storedStatusJson = await AsyncStorage.getItem('jPuzzleStatus');
+      const storedStatusJson = await AsyncStorage.getItem('vPuzzleStatus');
       let puzzleStatus = storedStatusJson ? JSON.parse(storedStatusJson) : {};
       
-      puzzleStatus[1] = status;
+      puzzleStatus[5] = status;
       
-      await AsyncStorage.setItem('jPuzzleStatus', JSON.stringify(puzzleStatus));
+      await AsyncStorage.setItem('vPuzzleStatus', JSON.stringify(puzzleStatus));
     } catch (error) {
       console.error('Failed to save puzzle status:', error);
     }
@@ -100,7 +111,8 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
     if (!isCorrect) {
       savePuzzleStatus('skipped');
     }
-    navigation.navigate('WordPuzzleScreenJ2');
+    // Navigate to the verbs screen for V
+    navigation.navigate('VerbsScreenV');
   };
   
   const screenHeight = height - 230;
@@ -121,64 +133,81 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
           <Text style={styles.headerTitle}>Word Puzzle</Text>
         </View>
         
-        <View style={styles.mainContent}>
-          <View style={[styles.imageContainer, { width: imageSize, height: imageSize, borderRadius: imageSize / 2 }]}>
-            <Image 
-              source={image} 
-              style={[styles.image, { width: imageSize * 0.75, height: imageSize * 0.75 }]} 
-            />
-          </View>
-          
-          <View style={styles.placementAreaContainer}>
-            <View style={styles.placementBackground} />
-            <View style={styles.placementArea}>
-              {placedTiles.map((tile, index) => (
-                <TouchableOpacity 
-                  key={`drop-${index}`}
-                  style={styles.dropZone}
-                  onPress={() => removePlacedTile(index)}
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <View style={styles.mainContent}>
+            <View style={[styles.imageContainer, { 
+              width: imageSize, 
+              height: imageSize, 
+              borderRadius: imageSize / 2,
+              overflow: 'hidden'
+            }]}>
+              <Image 
+                source={image} 
+                style={[styles.image, { 
+                  width: imageSize * 0.7, 
+                  height: imageSize * 0.7,
+                  resizeMode: 'contain'
+                }]} 
+              />
+            </View>
+            
+            <View style={styles.placementAreaContainer}>
+              <View style={styles.placementBackground} />
+              <View style={styles.placementArea}>
+                {placedTiles.map((tile, index) => (
+                  <TouchableOpacity 
+                    key={`drop-${index}`}
+                    style={[styles.dropZone, { width: TILE_SIZE, height: TILE_SIZE }]}
+                    onPress={() => removePlacedTile(index)}
+                  >
+                    {tile && (
+                      <View style={[styles.placedTile, { width: TILE_SIZE - 4, height: TILE_SIZE - 4 }]}>
+                        <Text style={[styles.tileText, { fontSize: Math.min(TILE_SIZE * 0.5, 20) }]}>
+                          {tile.letter}
+                        </Text>
+                      </View>
+                    )}
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </View>
+            
+            <Text style={styles.helpText}>
+              {placedTiles.includes(null) ? 
+                "Tap a letter to place it" : 
+                "Tap a placed letter to remove it"
+              }
+            </Text>
+            
+            <View style={styles.tilesContainer}>
+              {availableTiles.map((tile) => (
+                <TouchableOpacity
+                  key={tile.id}
+                  style={[styles.tile, { width: TILE_SIZE, height: TILE_SIZE }]}
+                  onPress={() => {
+                    const emptyIndex = placedTiles.findIndex(t => t === null);
+                    if (emptyIndex !== -1) placeTile(tile, emptyIndex);
+                  }}
                 >
-                  {tile && (
-                    <View style={styles.placedTile}>
-                      <Text style={styles.tileText}>{tile.letter}</Text>
-                    </View>
-                  )}
+                  <Text style={[styles.tileText, { fontSize: Math.min(TILE_SIZE * 0.5, 20) }]}>
+                    {tile.letter}
+                  </Text>
                 </TouchableOpacity>
               ))}
             </View>
-          </View>
-          
-          <Text style={styles.helpText}>
-            {placedTiles.includes(null) ? 
-              "Tap a letter to place it" : 
-              "Tap a placed letter to remove it"
-            }
-          </Text>
-          
-          <View style={styles.tilesContainer}>
-            {availableTiles.map((tile) => (
-              <TouchableOpacity
-                key={tile.id}
-                style={styles.tile}
-                onPress={() => {
-                  const emptyIndex = placedTiles.findIndex(t => t === null);
-                  if (emptyIndex !== -1) placeTile(tile, emptyIndex);
-                }}
+            
+            <View style={styles.checkButtonContainer}>
+              <TouchableOpacity 
+                style={styles.checkButton} 
+                onPress={checkAnswer} 
+                activeOpacity={0.7}
               >
-                <Text style={styles.tileText}>{tile.letter}</Text>
+                <FontAwesome5 name="check-circle" size={22} color="white" style={styles.buttonIcon} />
+                <Text style={styles.checkButtonText}>Check</Text>
               </TouchableOpacity>
-            ))}
+            </View>
           </View>
-          
-          <TouchableOpacity 
-            style={styles.checkButton} 
-            onPress={checkAnswer} 
-            activeOpacity={0.7}
-          >
-            <FontAwesome5 name="check-circle" size={22} color="white" style={styles.buttonIcon} />
-            <Text style={styles.checkButtonText}>Check</Text>
-          </TouchableOpacity>
-        </View>
+        </ScrollView>
           
         {showFeedback && (
           <View style={styles.feedbackContainer}>
@@ -211,7 +240,9 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
                   color="white" 
                   style={styles.buttonIcon} 
                 />
-                <Text style={styles.actionButtonText}>Next</Text>
+                <Text style={styles.actionButtonText}>
+                  {isCorrect ? "Complete" : "Next"}
+                </Text>
               </TouchableOpacity>
               
               {!isCorrect && (
@@ -249,11 +280,14 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'relative',
   },
+  scrollContent: {
+    flexGrow: 1,
+  },
   mainContent: {
     flex: 1,
     paddingHorizontal: 20,
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     paddingBottom: 15,
   },
   header: {
@@ -266,7 +300,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     height: 50,
   },
-  backButton: { position: 'absolute', left: 20, zIndex: 10 },
+  backButton: { 
+    position: 'absolute', 
+    left: 20, 
+    zIndex: 10 
+  },
   headerTitle: {
     fontSize: 28,
     fontWeight: '800',
@@ -284,11 +322,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 8,
-    marginBottom: 15,
-    borderWidth: 5,
+    marginBottom: 20,
+    borderWidth: 4,
     borderColor: '#FFD700',
   },
-  image: { resizeMode: 'contain' },
+  image: { 
+    alignSelf: 'center',
+  },
   placementAreaContainer: {
     position: 'relative',
     width: '100%',
@@ -315,8 +355,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   dropZone: {
-    width: TILE_SIZE,
-    height: TILE_SIZE,
     margin: 4,
     borderWidth: 2,
     borderStyle: 'dashed',
@@ -339,8 +377,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   tile: {
-    width: TILE_SIZE,
-    height: TILE_SIZE,
     borderWidth: 2,
     borderColor: '#5D3FD3',
     borderRadius: 8,
@@ -355,8 +391,6 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   placedTile: {
-    width: '100%',
-    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFD700',
@@ -365,9 +399,13 @@ const styles = StyleSheet.create({
     borderColor: '#5D3FD3',
   },
   tileText: {
-    fontSize: Math.min(TILE_SIZE * 0.5, 22),
     fontWeight: 'bold',
     color: '#5D3FD3',
+  },
+  checkButtonContainer: {
+    width: '100%',
+    paddingVertical: 10,
+    marginTop: 'auto',
   },
   checkButton: {
     backgroundColor: '#00E676',
@@ -386,7 +424,9 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 5,
   },
-  buttonIcon: { marginRight: 8 },
+  buttonIcon: { 
+    marginRight: 8 
+  },
   checkButtonText: {
     color: 'white',
     fontWeight: 'bold',
@@ -444,7 +484,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  feedbackIcon: { marginRight: 5 },
+  feedbackIcon: { 
+    marginRight: 5 
+  },
   actionButtonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -466,8 +508,12 @@ const styles = StyleSheet.create({
     maxWidth: '45%',
     marginHorizontal: 5,
   },
-  nextButton: { backgroundColor: '#2196F3' },
-  retryButton: { backgroundColor: '#FF9800' },
+  nextButton: { 
+    backgroundColor: '#2196F3' 
+  },
+  retryButton: { 
+    backgroundColor: '#FF9800' 
+  },
   actionButtonText: {
     color: 'white',
     fontWeight: 'bold',

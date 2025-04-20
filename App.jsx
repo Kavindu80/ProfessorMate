@@ -28,7 +28,7 @@ import GoalsScreen from "./app/screens/GoalsScreen";
 import BeginnersScreen from './app/screens/beginner/BeginnersScreen';
 import AlphabetScreen from './app/screens/beginner/AlphabetScreen';
 import LetterDetailScreen from "./app/screens/beginner/LetterDetailScreen";
-import WordsStartingWithA from "./app/screens/beginner/WordsStartingWithA";
+import AlphabetLearningScreen from "./app/screens/beginner/AlphabetLearningScreen";
 import WordsStartingWithAScreen_temp from "./app/screens/beginner/WordsStartingWithAScreen_temp";
 import WordPuzzleScreen from "./app/screens/beginner/WordPuzzleScreen";
 import WordPuzzleScreen2 from "./app/screens/beginner/WordPuzzleScreen2";
@@ -182,7 +182,102 @@ import OPuzzleProgressScreen from "./app/screens/beginner/O/OPuzzleProgressScree
 import LetterDetailScreenP from "./app/screens/beginner/P/LetterDetailScreenP";
 import WordsStartingWithPScreen from "./app/screens/beginner/P/WordsStartingWithPScreen";
 import WordPuzzleScreenP1 from "./app/screens/beginner/P/WordPuzzleScreenP1";
-
+import WordPuzzleScreenP2 from "./app/screens/beginner/P/WordPuzzleScreenP2";
+import WordPuzzleScreenP3 from "./app/screens/beginner/P/WordPuzzleScreenP3";
+import WordPuzzleScreenP4 from "./app/screens/beginner/P/WordPuzzleScreenP4";
+import WordPuzzleScreenP5 from "./app/screens/beginner/P/WordPuzzleScreenP5";
+import VerbsScreenP from "./app/screens/beginner/P/VerbsScreenP";
+import PPuzzleProgressScreen from "./app/screens/beginner/P/PPuzzleProgressScreen";
+import LetterDetailScreenQ from "./app/screens/beginner/Q/LetterDetailScreenQ";
+import WordsStartingWithQScreen from "./app/screens/beginner/Q/WordsStartingWithQScreen";
+import WordPuzzleScreenQ1 from "./app/screens/beginner/Q/WordPuzzleScreenQ1";
+import WordPuzzleScreenQ2 from "./app/screens/beginner/Q/WordPuzzleScreenQ2";
+import WordPuzzleScreenQ3 from "./app/screens/beginner/Q/WordPuzzleScreenQ3";
+import WordPuzzleScreenQ4 from "./app/screens/beginner/Q/WordPuzzleScreenQ4";
+import WordPuzzleScreenQ5 from "./app/screens/beginner/Q/WordPuzzleScreenQ5";
+import VerbsScreenQ from "./app/screens/beginner/Q/VerbsScreenQ";
+import QPuzzleProgressScreen from "./app/screens/beginner/Q/QPuzzleProgressScreen";
+import LetterDetailScreenR from "./app/screens/beginner/R/LetterDetailScreenR";
+import WordsStartingWithRScreen from "./app/screens/beginner/R/WordsStartingWithRScreen";
+import WordPuzzleScreenR1 from "./app/screens/beginner/R/WordPuzzleScreenR1";
+import WordPuzzleScreenR2 from "./app/screens/beginner/R/WordPuzzleScreenR2";
+import WordPuzzleScreenR3 from "./app/screens/beginner/R/WordPuzzleScreenR3";
+import WordPuzzleScreenR4 from "./app/screens/beginner/R/WordPuzzleScreenR4";
+import WordPuzzleScreenR5 from "./app/screens/beginner/R/WordPuzzleScreenR5";
+import VerbsScreenR from "./app/screens/beginner/R/VerbsScreenR";
+import RPuzzleProgressScreen from "./app/screens/beginner/R/RPuzzleProgressScreen";
+import LetterDetailScreenS from "./app/screens/beginner/S/LetterDetailScreenS";
+import WordsStartingWithSScreen from "./app/screens/beginner/S/WordsStartingWithSScreen";
+import WordPuzzleScreenS1 from "./app/screens/beginner/S/WordPuzzleScreenS1";
+import WordPuzzleScreenS2 from "./app/screens/beginner/S/WordPuzzleScreenS2";
+import WordPuzzleScreenS3 from "./app/screens/beginner/S/WordPuzzleScreenS3";
+import WordPuzzleScreenS4 from "./app/screens/beginner/S/WordPuzzleScreenS4";
+import WordPuzzleScreenS5 from "./app/screens/beginner/S/WordPuzzleScreenS5";
+import VerbsScreenS from "./app/screens/beginner/S/VerbsScreenS";
+import SPuzzleProgressScreen from "./app/screens/beginner/S/SPuzzleProgressScreen";
+import LetterDetailScreenT from "./app/screens/beginner/T/LetterDetailScreenT";
+import WordsStartingWithTScreen from "./app/screens/beginner/T/WordsStartingWithTScreen";
+import WordPuzzleScreenT1 from "./app/screens/beginner/T/WordPuzzleScreenT1";
+import WordPuzzleScreenT2 from "./app/screens/beginner/T/WordPuzzleScreenT2";
+import WordPuzzleScreenT3 from "./app/screens/beginner/T/WordPuzzleScreenT3";
+import WordPuzzleScreenT4 from "./app/screens/beginner/T/WordPuzzleScreenT4";
+import WordPuzzleScreenT5 from "./app/screens/beginner/T/WordPuzzleScreenT5";
+import VerbsScreenT from "./app/screens/beginner/T/VerbsScreenT";
+import TPuzzleProgressScreen from "./app/screens/beginner/T/TPuzzleProgressScreen";
+import LetterDetailScreenU from "./app/screens/beginner/U/LetterDetailScreenU";
+import WordsStartingWithUScreen from "./app/screens/beginner/U/WordsStartingWithUScreen";
+import WordPuzzleScreenU1 from "./app/screens/beginner/U/WordPuzzleScreenU1";
+import WordPuzzleScreenU2 from "./app/screens/beginner/U/WordPuzzleScreenU2";
+import WordPuzzleScreenU3 from "./app/screens/beginner/U/WordPuzzleScreenU3";
+import WordPuzzleScreenU4 from "./app/screens/beginner/U/WordPuzzleScreenU4";
+import WordPuzzleScreenU5 from "./app/screens/beginner/U/WordPuzzleScreenU5";
+import VerbsScreenU from "./app/screens/beginner/U/VerbsScreenU";
+import UPuzzleProgressScreen from "./app/screens/beginner/U/UPuzzleProgressScreen";
+import LetterDetailScreenV from "./app/screens/beginner/V/LetterDetailScreenV";
+import WordsStartingWithVScreen from "./app/screens/beginner/V/WordsStartingWithVScreen";
+import WordPuzzleScreenV1 from "./app/screens/beginner/V/WordPuzzleScreenV1";
+import WordPuzzleScreenV2 from "./app/screens/beginner/V/WordPuzzleScreenV2";
+import WordPuzzleScreenV3 from "./app/screens/beginner/V/WordPuzzleScreenV3";
+import WordPuzzleScreenV4 from "./app/screens/beginner/V/WordPuzzleScreenV4";
+import WordPuzzleScreenV5 from "./app/screens/beginner/V/WordPuzzleScreenV5";
+import VerbsScreenV from "./app/screens/beginner/V/VerbsScreenV";
+import VPuzzleProgressScreen from "./app/screens/beginner/V/VPuzzleProgressScreen";
+import LetterDetailScreenW from "./app/screens/beginner/W/LetterDetailScreenW";
+import WordsStartingWithWScreen from "./app/screens/beginner/W/WordsStartingWithWScreen";
+import WordPuzzleScreenW1 from "./app/screens/beginner/W/WordPuzzleScreenW1";
+import WordPuzzleScreenW2 from "./app/screens/beginner/W/WordPuzzleScreenW2";
+import WordPuzzleScreenW3 from "./app/screens/beginner/W/WordPuzzleScreenW3";
+import WordPuzzleScreenW4 from "./app/screens/beginner/W/WordPuzzleScreenW4";
+import WordPuzzleScreenW5 from "./app/screens/beginner/W/WordPuzzleScreenW5";
+import VerbsScreenW from "./app/screens/beginner/W/VerbsScreenW";
+import WPuzzleProgressScreen from "./app/screens/beginner/W/WPuzzleProgressScreen";
+import LetterDetailScreenX from "./app/screens/beginner/X/LetterDetailScreenX";
+import WordsStartingWithXScreen from "./app/screens/beginner/X/WordsStartingWithXScreen";
+import WordPuzzleScreenX1 from "./app/screens/beginner/X/WordPuzzleScreenX1";
+import WordPuzzleScreenX2 from "./app/screens/beginner/X/WordPuzzleScreenX2";
+import WordPuzzleScreenX3 from "./app/screens/beginner/X/WordPuzzleScreenX3";
+import WordPuzzleScreenX4 from "./app/screens/beginner/X/WordPuzzleScreenX4";
+import WordPuzzleScreenX5 from "./app/screens/beginner/X/WordPuzzleScreenX5";
+import VerbsScreenX from "./app/screens/beginner/X/VerbsScreenX";
+import XPuzzleProgressScreen from "./app/screens/beginner/X/XPuzzleProgressScreen";
+import LetterDetailScreenY from "./app/screens/beginner/Y/LetterDetailScreenY";
+import WordsStartingWithYScreen from "./app/screens/beginner/Y/WordsStartingWithYScreen";
+import WordPuzzleScreenY1 from "./app/screens/beginner/Y/WordPuzzleScreenY1";
+import WordPuzzleScreenY2 from "./app/screens/beginner/Y/WordPuzzleScreenY2";
+import WordPuzzleScreenY3 from "./app/screens/beginner/Y/WordPuzzleScreenY3";
+import WordPuzzleScreenY4 from "./app/screens/beginner/Y/WordPuzzleScreenY4";
+import WordPuzzleScreenY5 from "./app/screens/beginner/Y/WordPuzzleScreenY5";
+import VerbsScreenY from "./app/screens/beginner/Y/VerbsScreenY";
+import YPuzzleProgressScreen from "./app/screens/beginner/Y/YPuzzleProgressScreen";
+import LetterDetailScreenZ from "./app/screens/beginner/Z/LetterDetailScreenZ";
+import WordsStartingWithZScreen from "./app/screens/beginner/Z/WordsStartingWithZScreen";
+import WordPuzzleScreenZ1 from "./app/screens/beginner/Z/WordPuzzleScreenZ1";
+import WordPuzzleScreenZ2 from "./app/screens/beginner/Z/WordPuzzleScreenZ2";
+import WordPuzzleScreenZ3 from "./app/screens/beginner/Z/WordPuzzleScreenZ3";
+import WordPuzzleScreenZ4 from "./app/screens/beginner/Z/WordPuzzleScreenZ4";
+import WordPuzzleScreenZ5 from "./app/screens/beginner/Z/WordPuzzleScreenZ5";
+import VerbsScreenZ from "./app/screens/beginner/Z/VerbsScreenZ";
+import ZPuzzleProgressScreen from "./app/screens/beginner/Z/ZPuzzleProgressScreen";
 
 const Stack = createStackNavigator();
 
@@ -219,7 +314,7 @@ export default function App() {
           <Stack.Screen name="AlphabetScreen" component={AlphabetScreen} />
           <Stack.Screen name="LetterDetail" component={LetterDetailScreen} />
           <Stack.Screen name="WordsStartingWithAScreen_temp" component={WordsStartingWithAScreen_temp} />
-          <Stack.Screen name="WordsStartingWithA" component={WordsStartingWithA} />
+          <Stack.Screen name="AlphabetLearningScreen" component={AlphabetLearningScreen} />
           <Stack.Screen name="WordPuzzleScreen" component={WordPuzzleScreen} />
           <Stack.Screen name="WordPuzzleScreen2" component={WordPuzzleScreen2} />
           <Stack.Screen name="WordPuzzleScreen3" component={WordPuzzleScreen3} />
@@ -372,7 +467,102 @@ export default function App() {
           <Stack.Screen name="LetterDetailScreenP" component={LetterDetailScreenP} />
           <Stack.Screen name="WordsStartingWithPScreen" component={WordsStartingWithPScreen} />
           <Stack.Screen name="WordPuzzleScreenP1" component={WordPuzzleScreenP1} />
-
+          <Stack.Screen name="WordPuzzleScreenP2" component={WordPuzzleScreenP2} />
+          <Stack.Screen name="WordPuzzleScreenP3" component={WordPuzzleScreenP3} />
+          <Stack.Screen name="WordPuzzleScreenP4" component={WordPuzzleScreenP4} />
+          <Stack.Screen name="WordPuzzleScreenP5" component={WordPuzzleScreenP5} />
+          <Stack.Screen name="VerbsScreenP" component={VerbsScreenP} />
+          <Stack.Screen name="PPuzzleProgressScreen" component={PPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenQ" component={LetterDetailScreenQ} />
+          <Stack.Screen name="WordsStartingWithQScreen" component={WordsStartingWithQScreen} />
+          <Stack.Screen name="WordPuzzleScreenQ1" component={WordPuzzleScreenQ1} />
+          <Stack.Screen name="WordPuzzleScreenQ2" component={WordPuzzleScreenQ2} />
+          <Stack.Screen name="WordPuzzleScreenQ3" component={WordPuzzleScreenQ3} />
+          <Stack.Screen name="WordPuzzleScreenQ4" component={WordPuzzleScreenQ4} />
+          <Stack.Screen name="WordPuzzleScreenQ5" component={WordPuzzleScreenQ5} />
+          <Stack.Screen name="VerbsScreenQ" component={VerbsScreenQ} />
+          <Stack.Screen name="QPuzzleProgressScreen" component={QPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenR" component={LetterDetailScreenR} />
+          <Stack.Screen name="WordsStartingWithRScreen" component={WordsStartingWithRScreen} />
+          <Stack.Screen name="WordPuzzleScreenR1" component={WordPuzzleScreenR1} />
+          <Stack.Screen name="WordPuzzleScreenR2" component={WordPuzzleScreenR2} />
+          <Stack.Screen name="WordPuzzleScreenR3" component={WordPuzzleScreenR3} />
+          <Stack.Screen name="WordPuzzleScreenR4" component={WordPuzzleScreenR4} />
+          <Stack.Screen name="WordPuzzleScreenR5" component={WordPuzzleScreenR5} />
+          <Stack.Screen name="VerbsScreenR" component={VerbsScreenR} />
+          <Stack.Screen name="RPuzzleProgressScreen" component={RPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenS" component={LetterDetailScreenS} />
+          <Stack.Screen name="WordsStartingWithSScreen" component={WordsStartingWithSScreen} />
+          <Stack.Screen name="WordPuzzleScreenS1" component={WordPuzzleScreenS1} />
+          <Stack.Screen name="WordPuzzleScreenS2" component={WordPuzzleScreenS2} />
+          <Stack.Screen name="WordPuzzleScreenS3" component={WordPuzzleScreenS3} />
+          <Stack.Screen name="WordPuzzleScreenS4" component={WordPuzzleScreenS4} />
+          <Stack.Screen name="WordPuzzleScreenS5" component={WordPuzzleScreenS5} />
+          <Stack.Screen name="VerbsScreenS" component={VerbsScreenS} />
+          <Stack.Screen name="SPuzzleProgressScreen" component={SPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenT" component={LetterDetailScreenT} />
+          <Stack.Screen name="WordsStartingWithTScreen" component={WordsStartingWithTScreen} />
+          <Stack.Screen name="WordPuzzleScreenT1" component={WordPuzzleScreenT1} />
+          <Stack.Screen name="WordPuzzleScreenT2" component={WordPuzzleScreenT2} />
+          <Stack.Screen name="WordPuzzleScreenT3" component={WordPuzzleScreenT3} />
+          <Stack.Screen name="WordPuzzleScreenT4" component={WordPuzzleScreenT4} />
+          <Stack.Screen name="WordPuzzleScreenT5" component={WordPuzzleScreenT5} />
+          <Stack.Screen name="VerbsScreenT" component={VerbsScreenT} />
+          <Stack.Screen name="TPuzzleProgressScreen" component={TPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenU" component={LetterDetailScreenU} />
+          <Stack.Screen name="WordsStartingWithUScreen" component={WordsStartingWithUScreen} />
+          <Stack.Screen name="WordPuzzleScreenU1" component={WordPuzzleScreenU1} />
+          <Stack.Screen name="WordPuzzleScreenU2" component={WordPuzzleScreenU2} />
+          <Stack.Screen name="WordPuzzleScreenU3" component={WordPuzzleScreenU3} />
+          <Stack.Screen name="WordPuzzleScreenU4" component={WordPuzzleScreenU4} />
+          <Stack.Screen name="WordPuzzleScreenU5" component={WordPuzzleScreenU5} />
+          <Stack.Screen name="VerbsScreenU" component={VerbsScreenU} />
+          <Stack.Screen name="UPuzzleProgressScreen" component={UPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenV" component={LetterDetailScreenV} />
+          <Stack.Screen name="WordsStartingWithVScreen" component={WordsStartingWithVScreen} />
+          <Stack.Screen name="WordPuzzleScreenV1" component={WordPuzzleScreenV1} />
+          <Stack.Screen name="WordPuzzleScreenV2" component={WordPuzzleScreenV2} />
+          <Stack.Screen name="WordPuzzleScreenV3" component={WordPuzzleScreenV3} />
+          <Stack.Screen name="WordPuzzleScreenV4" component={WordPuzzleScreenV4} />
+          <Stack.Screen name="WordPuzzleScreenV5" component={WordPuzzleScreenV5} />
+          <Stack.Screen name="VerbsScreenV" component={VerbsScreenV} />
+          <Stack.Screen name="VPuzzleProgressScreen" component={VPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenW" component={LetterDetailScreenW} />
+          <Stack.Screen name="WordsStartingWithWScreen" component={WordsStartingWithWScreen} />
+          <Stack.Screen name="WordPuzzleScreenW1" component={WordPuzzleScreenW1} />
+          <Stack.Screen name="WordPuzzleScreenW2" component={WordPuzzleScreenW2} />
+          <Stack.Screen name="WordPuzzleScreenW3" component={WordPuzzleScreenW3} />
+          <Stack.Screen name="WordPuzzleScreenW4" component={WordPuzzleScreenW4} />
+          <Stack.Screen name="WordPuzzleScreenW5" component={WordPuzzleScreenW5} />
+          <Stack.Screen name="VerbsScreenW" component={VerbsScreenW} />
+          <Stack.Screen name="WPuzzleProgressScreen" component={WPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenX" component={LetterDetailScreenX} />
+          <Stack.Screen name="WordsStartingWithXScreen" component={WordsStartingWithXScreen} />
+          <Stack.Screen name="WordPuzzleScreenX1" component={WordPuzzleScreenX1} />
+          <Stack.Screen name="WordPuzzleScreenX2" component={WordPuzzleScreenX2} />
+          <Stack.Screen name="WordPuzzleScreenX3" component={WordPuzzleScreenX3} />
+          <Stack.Screen name="WordPuzzleScreenX4" component={WordPuzzleScreenX4} />
+          <Stack.Screen name="WordPuzzleScreenX5" component={WordPuzzleScreenX5} />
+          <Stack.Screen name="VerbsScreenX" component={VerbsScreenX} />
+          <Stack.Screen name="XPuzzleProgressScreen" component={XPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenY" component={LetterDetailScreenY} />
+          <Stack.Screen name="WordsStartingWithYScreen" component={WordsStartingWithYScreen} />
+          <Stack.Screen name="WordPuzzleScreenY1" component={WordPuzzleScreenY1} />
+          <Stack.Screen name="WordPuzzleScreenY2" component={WordPuzzleScreenY2} />
+          <Stack.Screen name="WordPuzzleScreenY3" component={WordPuzzleScreenY3} />
+          <Stack.Screen name="WordPuzzleScreenY4" component={WordPuzzleScreenY4} />
+          <Stack.Screen name="WordPuzzleScreenY5" component={WordPuzzleScreenY5} />
+          <Stack.Screen name="VerbsScreenY" component={VerbsScreenY} />
+          <Stack.Screen name="YPuzzleProgressScreen" component={YPuzzleProgressScreen} />
+          <Stack.Screen name="LetterDetailScreenZ" component={LetterDetailScreenZ} />
+          <Stack.Screen name="WordsStartingWithZScreen" component={WordsStartingWithZScreen} />
+          <Stack.Screen name="WordPuzzleScreenZ1" component={WordPuzzleScreenZ1} />
+          <Stack.Screen name="WordPuzzleScreenZ2" component={WordPuzzleScreenZ2} />
+          <Stack.Screen name="WordPuzzleScreenZ3" component={WordPuzzleScreenZ3} />
+          <Stack.Screen name="WordPuzzleScreenZ4" component={WordPuzzleScreenZ4} />
+          <Stack.Screen name="WordPuzzleScreenZ5" component={WordPuzzleScreenZ5} />
+          <Stack.Screen name="VerbsScreenZ" component={VerbsScreenZ} />
+          <Stack.Screen name="ZPuzzleProgressScreen" component={ZPuzzleProgressScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

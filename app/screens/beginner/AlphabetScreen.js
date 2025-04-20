@@ -75,7 +75,28 @@ export default function AlphabetScreen() {
       navigation.navigate("LetterDetailScreenO");
     } else if (letter === "Pp") {
       navigation.navigate("LetterDetailScreenP");
-    } else {
+    } else if (letter === "Qq") {
+      navigation.navigate("LetterDetailScreenQ");
+      } else if (letter === "Rr") {
+      navigation.navigate("LetterDetailScreenR");
+    } else if (letter === "Ss") {
+      navigation.navigate("LetterDetailScreenS");
+    } else if (letter === "Tt") {
+      navigation.navigate("LetterDetailScreenT");
+      } else if (letter === "Uu") {
+      navigation.navigate("LetterDetailScreenU");
+      } else if (letter === "Vv") {
+      navigation.navigate("LetterDetailScreenV");
+      } else if (letter === "Ww") {
+      navigation.navigate("LetterDetailScreenW");
+      } else if (letter === "Xx") {
+      navigation.navigate("LetterDetailScreenX");
+      } else if (letter === "Yy") {
+      navigation.navigate("LetterDetailScreenY");
+      } else if (letter === "Zz") {
+      navigation.navigate("LetterDetailScreenZ");
+      // You can add navigation for Xx here if needed
+      } else {
       alert("Currently, only letter 'Aa' is available for learning.");
     }
   };
@@ -83,7 +104,7 @@ export default function AlphabetScreen() {
   // Function to handle "Learn Words" button press
   const handleLearnWords = () => {
     // Navigate to the Words Screen directly when Learn Words is pressed
-    navigation.navigate("WordsStartingWithA");
+    navigation.navigate("AlphabetLearningScreen");
   };
 
   // Array of alphabet letters (uppercase and lowercase pairs)

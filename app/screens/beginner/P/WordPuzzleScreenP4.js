@@ -9,8 +9,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const { width, height } = Dimensions.get('window');
 const TILE_SIZE = Math.min(width / 8, 45);
 
-export default function WordPuzzleScreenJ1({ navigation, route }) {
-  const { word = "JACKET", image = require("../../../../assets/items/jacket.png") } = route?.params || {};
+export default function WordPuzzleScreenP4({ navigation, route }) {
+  const { word = "PARROT", image = require("../../../../assets/items/parrot.png") } = route?.params || {};
   
   const [isCorrect, setIsCorrect] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -18,7 +18,7 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
   
   const createPuzzleLetters = () => {
     const extraLettersCount = Math.min(8 - word.length, 5);
-    const extraLetters = 'BDFGHILMNOPQRSUVWXYZ'
+    const extraLetters = 'BCEFGHIJKLMNQSUVWXYZ'
       .split('')
       .filter(l => !word.includes(l))
       .sort(() => Math.random() - 0.5)
@@ -28,7 +28,7 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
       .map(letter => ({ 
         letter, 
         id: Math.random().toString(),
-        isPlaced: falses
+        isPlaced: false
       }))
       .sort(() => Math.random() - 0.5);
   };
@@ -63,12 +63,12 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
   
   const savePuzzleStatus = async (status) => {
     try {
-      const storedStatusJson = await AsyncStorage.getItem('jPuzzleStatus');
+      const storedStatusJson = await AsyncStorage.getItem('pPuzzleStatus');
       let puzzleStatus = storedStatusJson ? JSON.parse(storedStatusJson) : {};
       
-      puzzleStatus[1] = status;
+      puzzleStatus[4] = status;
       
-      await AsyncStorage.setItem('jPuzzleStatus', JSON.stringify(puzzleStatus));
+      await AsyncStorage.setItem('pPuzzleStatus', JSON.stringify(puzzleStatus));
     } catch (error) {
       console.error('Failed to save puzzle status:', error);
     }
@@ -100,7 +100,8 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
     if (!isCorrect) {
       savePuzzleStatus('skipped');
     }
-    navigation.navigate('WordPuzzleScreenJ2');
+    // Assuming there is no next puzzle, or you can specify the next screen here
+    navigation.navigate('WordPuzzleScreenP5');
   };
   
   const screenHeight = height - 230;
@@ -122,10 +123,18 @@ export default function WordPuzzleScreenJ1({ navigation, route }) {
         </View>
         
         <View style={styles.mainContent}>
-          <View style={[styles.imageContainer, { width: imageSize, height: imageSize, borderRadius: imageSize / 2 }]}>
+          <View style={[styles.imageContainer, { 
+            width: imageSize, 
+            height: imageSize, 
+            borderRadius: imageSize / 2,
+            overflow: 'hidden'
+          }]}>
             <Image 
               source={image} 
-              style={[styles.image, { width: imageSize * 0.75, height: imageSize * 0.75 }]} 
+              style={[styles.image, { 
+                width: imageSize * 0.85, 
+                height: imageSize * 0.85 
+              }]} 
             />
           </View>
           
@@ -284,11 +293,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 8,
-    marginBottom: 15,
-    borderWidth: 5,
+    marginBottom: 20,
+    borderWidth: 4,
     borderColor: '#FFD700',
   },
-  image: { resizeMode: 'contain' },
+  image: { 
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
   placementAreaContainer: {
     position: 'relative',
     width: '100%',
